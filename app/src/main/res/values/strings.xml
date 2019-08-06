@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyViewModel</string>
+    <string name="judul_filmnya">Judul Film</string>
+</resources>
