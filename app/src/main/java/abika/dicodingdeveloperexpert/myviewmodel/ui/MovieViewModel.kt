@@ -16,8 +16,8 @@ class MovieViewModel : ViewModel() {
     val TAG = "MovieViewModel"
 
     init {
-
         getData()
+        //dipanggil ketika inisialisasi viewModel ini
     }
 
     private fun getData() {
@@ -31,16 +31,18 @@ class MovieViewModel : ViewModel() {
             }
 
             override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
-                Log.d(TAG, "onRespone")
-                status.value = false
-                if(response.isSuccessful){
-                    Log.d(TAG, "onRespone isSuccessful")
-                    data.value = response.body()
-                }
-                else{
-                    Log.d(TAG, "onRespone isNotSuccessful")
-                    status.value = true
-                }
+                status.value = !response.isSuccessful
+                if (response.isSuccessful) data.value = response.body()
+//                Log.d(TAG, "onRespone")
+//                status.value = false
+//                if(response.isSuccessful){
+//                    Log.d(TAG, "onRespone isSuccessful")
+//                    data.value = response.body()
+//                }
+//                else{
+//                    Log.d(TAG, "onRespone isNotSuccessful")
+//                    status.value = true
+//                }
             }
         })
     }
@@ -50,7 +52,7 @@ class MovieViewModel : ViewModel() {
     }
 
     fun getStatus():MutableLiveData<Boolean>{
-        status.value = true
+//        status.value = true
         return status
     }
 }

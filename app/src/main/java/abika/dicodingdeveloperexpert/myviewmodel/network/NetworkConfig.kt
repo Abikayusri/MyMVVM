@@ -9,13 +9,14 @@ import java.util.concurrent.TimeUnit
 
 class NetworkConfig {
     fun getInterceptor(): OkHttpClient {
+        // ketika ada request dari a ke b. dapat menerima lognya
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val okhttp = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true)
+            .connectTimeout(30, TimeUnit.SECONDS) //koneksi ketika timeout
+            .writeTimeout(30, TimeUnit.SECONDS) //koneksi dari device ke server
+            .retryOnConnectionFailure(true) //apa yang dilakukan setelah timeout
             .build()
         return okhttp
     }

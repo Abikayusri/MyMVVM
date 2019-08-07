@@ -28,27 +28,25 @@ class MovieFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie, container, false)
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
 
-        viewModel.getStatus().observe(this, Observer {
-                t ->
-            if(t ?: true){
-                list.visibility = View.GONE
-                textStatus.visibility = View.VISIBLE
-            }else
-            {
-                list.visibility = View.VISIBLE
-                textStatus.visibility = View.GONE
-            }
-
-        })
-
-        viewModel.setData().observe(this, Observer {
-                t ->
-            t?.results?.let { showData(it) }
-        })
+        with(viewModel) {
+            getStatus().observe(this@MovieFragment, Observer { status ->
+                if (status ?: true) {
+                    list.visibility = View.GONE
+                    textStatus.visibility = View.VISIBLE
+                } else {
+                    list.visibility = View.VISIBLE
+                    textStatus.visibility = View.GONE
+                }
+            })
+            viewModel.setData().observe(this@MovieFragment, Observer { status ->
+                status?.results?.let { showData(it) }
+            })
+        }
     }
 
     private fun showData(data: List<MovieItem>) {

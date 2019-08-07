@@ -22,6 +22,8 @@ data class MovieResponse ( val data: List<MovieItem>): RecyclerView.Adapter<Movi
 
     override fun getItemCount(): Int {
         return data.size ?: 0
+        //ketika data sizenya null isinya akan 0
+        //terneri function
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
