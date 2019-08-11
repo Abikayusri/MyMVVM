@@ -1,6 +1,7 @@
 package abika.dicodingdeveloperexpert.myviewmodel.network
 
 import abika.dicodingdeveloperexpert.myviewmodel.Constans
+import android.widget.Toast
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,7 +21,6 @@ class NetworkConfig {
             .build()
         return okhttp
     }
-
 
     fun getNetwork(): Retrofit {
         return Retrofit.Builder().baseUrl(Constans.BASE_URL)

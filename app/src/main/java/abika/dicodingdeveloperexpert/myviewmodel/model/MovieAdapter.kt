@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-data class MovieResponse ( val data: List<MovieItem>): RecyclerView.Adapter<MovieResponse.MyHolder>(){
+data class MovieAdapter (val data: List<MovieItem>): RecyclerView.Adapter<MovieAdapter.MyHolder>(){
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(get: MovieItem){
             itemView.iv_movie_title.text = get.title

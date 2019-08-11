@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 import abika.dicodingdeveloperexpert.myviewmodel.R
 import abika.dicodingdeveloperexpert.myviewmodel.model.MovieItem
-import abika.dicodingdeveloperexpert.myviewmodel.model.MovieResponse
+import abika.dicodingdeveloperexpert.myviewmodel.model.MovieAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_movie.*
@@ -50,7 +50,7 @@ class MovieFragment : Fragment() {
     }
 
     private fun showData(data: List<MovieItem>) {
-        list.adapter = MovieResponse(data)
+        list.adapter = MovieAdapter(data)
 
     }
 
